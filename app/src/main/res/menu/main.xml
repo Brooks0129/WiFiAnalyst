@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:yourapp="http://schemas.android.com/apk/res-auto">
+    <!-- Search, should appear as action button -->
+    <item
+        android:id="@+id/action_speed"
+        android:title="@string/action_speed"
+        yourapp:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_doudong"
+        android:title="@string/action_doudong"
+        yourapp:showAsAction="never"/>
+    <item
+        android:id="@+id/action_yanchi"
+        android:title="@string/action_yanchi"
+        yourapp:showAsAction="never"/>
+    <item
+        android:id="@+id/action_lost"
+        android:orderInCategory="100"
+        android:title="@string/action_lost"
+        yourapp:showAsAction="never"/>
+    <item
+        android:id="@+id/action_about"
+        android:orderInCategory="100"
+        android:title="@string/action_about"
+        yourapp:showAsAction="never"/>
+</menu>
