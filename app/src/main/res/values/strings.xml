@@ -14,5 +14,6 @@
 
     <string name="title_activity_doudong">抖动</string>
     <string name="title_activity_lost">丢包率/延迟/抖动</string>
+    <string name="title_activity_chart">时间曲线</string>
     <string name="open_drawer">抽屉打开了</string>
 </resources>

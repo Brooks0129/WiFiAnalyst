@@ -1,9 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context=".activity.LostActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".activity.LostActivity">
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -14,57 +16,87 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="向百度发出ping命令"/>
-
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="向本校服务器发出ping命令"/>
+            android:text="向百度发出ping命令" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="向我自己填写的网站发出ping命令"/>
+            android:text="向我自己填写的网站发出ping命令" />
 
         <EditText
             android:id="@+id/et_ip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="请填写ip地址"
-            android:visibility="gone"/>
+            android:visibility="gone" />
     </RadioGroup>
 
     <Button
-        android:id="@+id/bt_lost"
+        android:id="@+id/bt_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_margin="15dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/shape"
         android:text="开始测试"
         android:textColor="#FFFFFF"
-        android:textSize="22dp"/>
+        android:textSize="22dp" />
 
-    <Button
-        android:id="@+id/bt_upload"
+    <EditText
+        android:id="@+id/edit_ping_count"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="3dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/shape"
-        android:text="上传数据"
-        android:textColor="#FFFFFF"
-        android:textSize="22dp"
-        android:visibility="gone"/>
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@null"
+        android:gravity="center"
+        android:hint="默认测试发送20个包，如需更改发包数量，点此输入更改(发包数量越多，测试时间越长)"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_hh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/bt_chart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape"
+            android:text="时间曲线"
+            android:textColor="#FFFFFF"
+            android:textSize="22dp" />
+
+        <Button
+            android:id="@+id/bt_upload"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape"
+            android:text="上传数据"
+            android:textColor="#FFFFFF"
+            android:textSize="22dp" />
+    </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2px"
-        android:background="#565892"/>
+        android:background="#565892" />
 
     <TextView
         android:id="@+id/tv_los"
@@ -75,12 +107,12 @@
         android:textColor="#8B4513"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2px"
-        android:background="#565892"/>
+        android:background="#565892" />
 
     <LinearLayout
         android:id="@+id/ll_yanchi"
@@ -101,20 +133,20 @@
                 style="@style/text_white_16_singleLine"
                 android:text="最小rtt"
                 android:textColor="#8B4513"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_min"
                 style="@style/text_blue_16_singleLine"
                 android:layout_marginTop="4.0dip"
-                android:textColor="#99FF0000"/>
+                android:textColor="#99FF0000" />
         </LinearLayout>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:background="@drawable/bg_line"
-            android:contentDescription="@null"/>
+            android:contentDescription="@null" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -128,20 +160,20 @@
                 android:text="平均rtt"
                 android:textColor="#8B4513"
                 android:textSize="15.0sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_avg"
                 style="@style/text_blue_16_singleLine"
                 android:layout_marginTop="4.0dip"
-                android:textColor="#99FF0000"/>
+                android:textColor="#99FF0000" />
         </LinearLayout>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:background="@drawable/bg_line"
-            android:contentDescription="@null"/>
+            android:contentDescription="@null" />
 
         <LinearLayout
             android:id="@+id/llyt_average_speed"
@@ -155,20 +187,20 @@
                 style="@style/text_white_16_singleLine"
                 android:text="最大rtt"
                 android:textColor="#8B4513"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_max"
                 style="@style/text_blue_16_singleLine"
                 android:layout_marginTop="4.0dip"
-                android:textColor="#99FF0000"/>
+                android:textColor="#99FF0000" />
         </LinearLayout>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:background="@drawable/bg_line"
-            android:contentDescription="@null"/>
+            android:contentDescription="@null" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -181,20 +213,20 @@
                 style="@style/text_white_16_singleLine"
                 android:text="算数平均偏差"
                 android:textColor="#8B4513"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_mean"
                 style="@style/text_blue_16_singleLine"
                 android:layout_marginTop="4.0dip"
-                android:textColor="#99FF0000"/>
+                android:textColor="#99FF0000" />
         </LinearLayout>
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2px"
-        android:background="#565892"/>
+        android:background="#565892" />
 
     <LinearLayout
         android:id="@+id/ll_doudong"
@@ -213,7 +245,7 @@
             android:gravity="center"
             android:text="抖动     jitter："
             android:textColor="#8B4513"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_doudong"
@@ -224,7 +256,7 @@
             android:layout_margin="10dp"
             android:layout_marginTop="4.0dip"
             android:layout_weight="1"
-            android:textColor="#99FF0000"/>
+            android:textColor="#99FF0000" />
 
 
     </LinearLayout>
@@ -232,7 +264,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2px"
-        android:background="#565892"/>
+        android:background="#565892" />
 
     <TextView
         android:id="@+id/tv_rec"
@@ -241,7 +273,7 @@
         android:text="返回的数据:"
         android:textColor="#000000"
         android:textSize="15sp"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -250,6 +282,6 @@
         <TextView
             android:id="@+id/tv_lost"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </ScrollView>
 </LinearLayout>
