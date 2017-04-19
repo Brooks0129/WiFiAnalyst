@@ -140,6 +140,10 @@ public class MainActivity extends AppCompatActivity {
         final User currentUser = BmobUser.getCurrentUser(User.class);
         userName.setText(currentUser == null ? "未登录" : currentUser.getUsername());
         CardView loginOut = (CardView) findViewById(R.id.login_out);
+        if (currentUser==null){
+            TextView textView = (TextView) findViewById(R.id.tv_log_out);
+            textView.setText("登录");
+        }
         loginOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

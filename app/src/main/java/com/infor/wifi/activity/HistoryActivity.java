@@ -1,5 +1,6 @@
 package com.infor.wifi.activity;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -83,7 +84,7 @@ public class HistoryActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
+        public void onBindViewHolder(ViewHolder holder, final int position) {
             holder.address.setText(list.get(position).address);
             holder.date.setText(list.get(position).date);
             holder.ssid.setText(list.get(position).WifiConnectedSSID);
@@ -94,6 +95,16 @@ public class HistoryActivity extends AppCompatActivity {
             holder.markVideo.setText("视频评分:" + list.get(position).gradeVideo);
             holder.markWeb.setText("网页评分:" + list.get(position).gradeWeb);
             holder.address.setText(list.get(position).address);
+//            holder.cardview.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent(HistoryActivity.this, DetailActivity.class);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putSerializable("wifiBean", list.get(position));
+//                    intent.putExtras(bundle);
+//                    startActivity(intent);
+//                }
+//            });
         }
 
         @Override
@@ -113,9 +124,11 @@ public class HistoryActivity extends AppCompatActivity {
         public TextView markWeb;
         public TextView markVideo;
         public TextView address;
+        public View cardview;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            cardview = itemView.findViewById(R.id.cardview);
             ssid = (TextView) itemView.findViewById(R.id.ssid);
             date = (TextView) itemView.findViewById(R.id.date);
             delay = (TextView) itemView.findViewById(R.id.delay);
