@@ -95,16 +95,16 @@ public class HistoryActivity extends AppCompatActivity {
             holder.markVideo.setText("视频评分:" + list.get(position).gradeVideo);
             holder.markWeb.setText("网页评分:" + list.get(position).gradeWeb);
             holder.address.setText(list.get(position).address);
-//            holder.cardview.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(HistoryActivity.this, DetailActivity.class);
-//                    Bundle bundle = new Bundle();
-//                    bundle.putSerializable("wifiBean", list.get(position));
-//                    intent.putExtras(bundle);
-//                    startActivity(intent);
-//                }
-//            });
+            holder.cardview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(HistoryActivity.this, DetailActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("wifiBean", list.get(position));
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            });
         }
 
         @Override
