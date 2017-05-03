@@ -209,63 +209,63 @@ public class LostActivity extends AppCompatActivity implements AMapLocationListe
         bt_upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LayoutInflater inflater = LayoutInflater.from(LostActivity.this);
-                final View view = inflater.inflate(R.layout.alertdialog_dafen, null);
-                final NumberPicker numberPicker1 = (NumberPicker) view.findViewById(R.id.numberPicker1);
-                numberPicker1.setMinValue(0);
-                numberPicker1.setMaxValue(5);
-                numberPicker1.setValue(0);
-                final NumberPicker numberPicker2 = (NumberPicker) view.findViewById(R.id.numberPicker2);
-                numberPicker2.setMinValue(0);
-                numberPicker2.setMaxValue(5);
-                numberPicker2.setValue(0);
-                final NumberPicker numberPicker3 = (NumberPicker) view.findViewById(R.id.numberPicker3);
-                numberPicker3.setMinValue(0);
-                numberPicker3.setMaxValue(5);
-                numberPicker3.setValue(0);
-                new AlertDialog.Builder(LostActivity.this)
-                        .setTitle("请对您的网络状况进行打分")
-                        .setView(view)
-                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                LayoutInflater inflater1 = LayoutInflater.from(LostActivity.this);
-                                View view1 = inflater1.inflate(R.layout.alertdialog_address, null);
-                                final TextView text_address_old = (TextView) view1.findViewById(R.id.text_address_old);
-                                final EditText edit_address_new = (EditText) view1.findViewById(R.id.edit_address_new);
-                                if (aMapLocation == null) {
-                                    text_address_old.setText("系统获取定位失败，请手动输入地址^_^");
-                                } else {
-                                    text_address_old.setText(aMapLocation.getAddress() + ";\n您也可以在下面手动输入地址^_^");
-                                }
-                                new AlertDialog.Builder(LostActivity.this).setTitle("选择地址")
-                                        .setView(view1).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                LayoutInflater inflater1 = LayoutInflater.from(LostActivity.this);
+                View view1 = inflater1.inflate(R.layout.alertdialog_address, null);
+                final TextView text_address_old = (TextView) view1.findViewById(R.id.text_address_old);
+                final EditText edit_address_new = (EditText) view1.findViewById(R.id.edit_address_new);
+                if (aMapLocation == null) {
+                    text_address_old.setText("系统获取定位失败，请手动输入地址^_^");
+                } else {
+                    text_address_old.setText(aMapLocation.getAddress() + ";\n您也可以在下面手动输入地址^_^");
+                }
+                new AlertDialog.Builder(LostActivity.this).setTitle("选择地址")
+                        .setView(view1).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(final DialogInterface dialog, int which) {
+                        String address;
+                        if (edit_address_new.getText() == null || edit_address_new.getText().toString().equals(""))
+                            address = aMapLocation != null ? aMapLocation.getAddress() : "";
+                        else {
+                            address = edit_address_new.getText().toString();
+                        }
+                        wifi.setAddress(address);
+                        wifi.setLongitude(String.valueOf(aMapLocation.getLongitude()));
+                        wifi.setLatitude(String.valueOf(aMapLocation.getLatitude()));
+                        String date = "";
+                        if (aMapLocation != null) {
+                            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            date = df.format(new Date(aMapLocation.getTime()));//定位时间
+                        }
+                        wifi.setDate(date);
+                        if (wifiConnectedFrequency != null)
+                            wifi.setWifiConnectedFrequency(wifiConnectedFrequency);
+                        if (wifiConnectedLevel != null)
+                            wifi.setWifiConnectedLevel(wifiConnectedLevel);
+                        if (wifiConnectedSSID != null)
+                            wifi.setWifiConnectedSSID(wifiConnectedSSID);
+                        LayoutInflater inflater = LayoutInflater.from(LostActivity.this);
+                        final View view = inflater.inflate(R.layout.alertdialog_dafen, null);
+                        final NumberPicker numberPicker1 = (NumberPicker) view.findViewById(R.id.numberPicker1);
+                        numberPicker1.setMinValue(0);
+                        numberPicker1.setMaxValue(5);
+                        numberPicker1.setValue(0);
+                        final NumberPicker numberPicker2 = (NumberPicker) view.findViewById(R.id.numberPicker2);
+                        numberPicker2.setMinValue(0);
+                        numberPicker2.setMaxValue(5);
+                        numberPicker2.setValue(0);
+                        final NumberPicker numberPicker3 = (NumberPicker) view.findViewById(R.id.numberPicker3);
+                        numberPicker3.setMinValue(0);
+                        numberPicker3.setMaxValue(5);
+                        numberPicker3.setValue(0);
+                        new AlertDialog.Builder(LostActivity.this)
+                                .setTitle("请对您的网络状况进行打分")
+                                .setView(view)
+                                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(final DialogInterface dialog, int which) {
-                                        String address;
-                                        if (edit_address_new.getText() == null || edit_address_new.getText().toString().equals(""))
-                                            address = aMapLocation != null ? aMapLocation.getAddress() : "";
-                                        else {
-                                            address = edit_address_new.getText().toString();
-                                        }
-                                        wifi.setAddress(address);
                                         wifi.setGradeWeb(String.valueOf(numberPicker1.getValue()));
                                         wifi.setGradeVideo(String.valueOf(numberPicker2.getValue()));
                                         wifi.setGradeChat(String.valueOf(numberPicker3.getValue()));
-                                        wifi.setLongitude(String.valueOf(aMapLocation.getLongitude()));
-                                        wifi.setLatitude(String.valueOf(aMapLocation.getLatitude()));
-                                        String date = "";
-                                        if (aMapLocation != null) {
-                                            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                                            date = df.format(new Date(aMapLocation.getTime()));//定位时间
-                                        }
-                                        wifi.setDate(date);
-                                        if (wifiConnectedFrequency != null)
-                                            wifi.setWifiConnectedFrequency(wifiConnectedFrequency);
-                                        if (wifiConnectedLevel != null)
-                                            wifi.setWifiConnectedLevel(wifiConnectedLevel);
-                                        if (wifiConnectedSSID != null)
-                                            wifi.setWifiConnectedSSID(wifiConnectedSSID);
                                         final ProgressDialog progressDialog = new ProgressDialog(LostActivity.this);
                                         progressDialog.setMessage("上传中...");
                                         progressDialog.setCancelable(true);
@@ -284,12 +284,14 @@ public class LostActivity extends AppCompatActivity implements AMapLocationListe
                                                 }
                                             }
                                         });
+
                                     }
                                 }).create().show();
-                            }
-                        }).create().show();
+                    }
+                }).create().show();
             }
         });
+
         handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -344,7 +346,9 @@ public class LostActivity extends AppCompatActivity implements AMapLocationListe
                 float avg = sum / doudonglv.size();
                 return new float[]{round(min), round(avg), round(max)};
             }
-        };
+        }
+
+        ;
     }
 
     private void getIntentData() {
