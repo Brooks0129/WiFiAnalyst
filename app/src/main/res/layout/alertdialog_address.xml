@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="300dp"
-              android:layout_height="250dp"
-              android:orientation="vertical">
+    android:layout_width="300dp"
+    android:layout_height="250dp"
+    android:orientation="vertical">
 
     <TextView
-        android:layout_margin="5dp"
+        android:id="@+id/longitude"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="系统为您定位的地址为："/>
+        android:layout_margin="5dp"
+        android:text="经度：" />
+
+    <TextView
+        android:id="@+id/latitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="纬度：" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="系统为您定位的地址为：" />
 
     <TextView
         android:id="@+id/text_address_old"
@@ -17,12 +31,12 @@
         android:layout_margin="5dp"
         android:text="空"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/edit_address_new"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="在这里手动输入您所在的位置，如不填，则使用系统为您定位的位置"
-        android:textSize="15dp"/>
+        android:textSize="15dp" />
 </LinearLayout>

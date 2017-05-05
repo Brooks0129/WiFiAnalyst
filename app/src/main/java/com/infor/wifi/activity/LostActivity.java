@@ -213,10 +213,16 @@ public class LostActivity extends AppCompatActivity implements AMapLocationListe
                 View view1 = inflater1.inflate(R.layout.alertdialog_address, null);
                 final TextView text_address_old = (TextView) view1.findViewById(R.id.text_address_old);
                 final EditText edit_address_new = (EditText) view1.findViewById(R.id.edit_address_new);
+                TextView longitude = (TextView) view1.findViewById(R.id.longitude);
+                TextView latitude = (TextView) view1.findViewById(R.id.latitude);
                 if (aMapLocation == null) {
                     text_address_old.setText("系统获取定位失败，请手动输入地址^_^");
+                    longitude.setVisibility(View.GONE);
+                    latitude.setVisibility(View.GONE);
                 } else {
                     text_address_old.setText(aMapLocation.getAddress() + ";\n您也可以在下面手动输入地址^_^");
+                    longitude.setText("经度：" + aMapLocation.getLongitude());
+                    latitude.setText("纬度：" + aMapLocation.getLatitude());
                 }
                 new AlertDialog.Builder(LostActivity.this).setTitle("选择地址")
                         .setView(view1).setPositiveButton("确定", new DialogInterface.OnClickListener() {
